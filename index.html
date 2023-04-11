@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Input your currency amount that you wish to convert</h1>
+    <select name="userCurrencySelector" id="userCurrencySelector">
+        <option>USD</option>
+        <option>WON</option>
+        <option>PHP</option>
+    </select>
+    <input type="text" placeholder="Value" class="userCurrency">
+    <hr>
+    <div>
+        <h2>Select currencies you wish to convert to:</h2>
+        <form action="">
+            <label for="usd"><input type="checkbox" name="usd" id="usd">USD</label>
+            <label for="usd"><input type="checkbox" name="php" id="php">PHP</label>
+            <label for="usd"><input type="checkbox" name="won" id="won">WON</label>
+        </form>
+    <hr>
+        <form action="">
+            <h3>Input current exchange rates</h3>
+            <p>Click the link of your desired conversion and input the current exchange rate into the box next to the link you selected.</p>
+            <a href="https://tinyurl.com/3z748823" target="_blank">USD to PHP rate link</a>
+            <input type="text" id="usd-php">
+            <br>
+            <a href="https://tinyurl.com/42vabbxm" target="_blank">USD to WON rate link</a>
+            <input type="text" id="usd-won">
+            <br>
+            <a href="https://tinyurl.com/26wucdbb" target="_blank">WON to PHP rate link</a>
+            <input type="text" id="won-php">
+            <br>
+            <a href="https://tinyurl.com/34xmvnpc" target="_blank">WON to USD rate link</a>
+            <input type="text" id="won-usd">
+            <br>
+            <a href="https://tinyurl.com/3za4bj63" target="_blank">PHP to WON rate link</a>
+            <input type="text" id="php-won">
+            <br>
+            <a href="https://tinyurl.com/munk2pkk" target="_blank">PHP to USD rate link</a>
+            <input type="text" id="php-usd">
+            <br>
+            <br>
+            <button type="submit">Convert Values</button>
+        </form>
+    </div>
+    <p></p>
+</body>
+</html>
