@@ -13,32 +13,25 @@ const userCurrencyDropdown = document.getElementById("userCurrencySelector");
 const selectedCurrency = userCurrencyDropdown.options[userCurrencyDropdown.selectedIndex].value;
 
 // Find user desired currency conversions based on checkbox selections in an array
-function getCheckedValues() {
-    let checkedValues = [];
-    let checkboxes = document.getElementsByTagName("input");
-    for (var i = 0; i < checkboxes.length; i++) {
-      if (checkboxes[i].type === "checkbox" && checkboxes[i].checked) {
-        checkedValues.push(checkboxes[i].value);
+let checkedValues = [];
+let checkBoxes = document.getElementsByTagName("input");
+  for (let i = 0; i < checkBoxes.length; i++) {
+    if (checkBoxes[i].type === "checkbox" && checkBoxes[i].checked) {
+      checkedValues.push(checkBoxes[i].value);
       }
-    }
-    return checkedValues;
   }
 
 //define the conversion required in an array
-function getConversionsRequired() {
-    let conversionsRequired = [];
-    for (var i = 0; i < checkedValues.length; i++) {
-        conversionRequired[i] = selectedCurrency + checkedValues[i];
-      }
-    return conversionsRequired
-    }
+let conversionsRequired = [];
+  for (let i = 0; i < checkedValues.length; i++) {
+    conversionsRequired[i] = selectedCurrency.push(checkedValues[i] + selectedCurrency.value);
+}
 
 //break out required conversion calculations
 
 //display value of conversion calculations in p html element at bottom of site
 submit.addEventListener('click', function() {
     event.preventDefault();
-    convDollarToPeso();
     let output = document.getElementById("output");
-    output.textContent = conversionRequired;
+    output.textContent = checkedValues;
 });
