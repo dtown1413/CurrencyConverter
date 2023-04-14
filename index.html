@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
     <title>USD, WON, and PHP Currency Converter</title>
 </head>
-<body>
+<body id="body" class="body">
     <h1>Input your currency amount that you wish to convert</h1>
     <select name="userCurrencySelector" id="userCurrencySelector">
         <option value="usd">USD</option>
@@ -20,13 +20,14 @@
         <h2>Select currencies you wish to convert to:</h2>
         <form action="">
             <label for="usd"><input type="checkbox" id="usd" value="usd" class="checkbox">USD</label>
-            <label for="usd"><input type="checkbox" id="php" value="php" class="checkbox">PHP</label>
-            <label for="usd"><input type="checkbox" id="won" value="won" class="checkbox">WON</label>
+            <label for="php"><input type="checkbox" id="php" value="php" class="checkbox">PHP</label>
+            <label for="won"><input type="checkbox" id="won" value="won" class="checkbox">WON</label>
         </form>
     <hr>
         <form action="">
             <h3>Input current exchange rates</h3>
-            <p>Click the link of your desired conversion and input the current exchange rate into the box next to the link you selected.</p>
+            <p>Click the link of your desired conversion and input the current exchange rate into the box next to the link you selected.<br>
+            <Strong>Important: Remove all commas in the conversion rate.</Strong></p>
             <a href="https://tinyurl.com/3z748823" target="_blank">USD to PHP rate link</a>
             <input type="text" id="usdphp" class="usd-php">
             <br>

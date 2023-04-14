@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const pesoToDollar = document.querySelector('.php-usd');
   const userCurrency = document.querySelector('.userCurrency');
   const submit = document.querySelector('.submit');
+  const body = document.querySelector('.body')
 
   // Find user currency type in drop down menu and put in variable
   const userCurrencyDropdown = document.getElementById("userCurrencySelector");
@@ -35,36 +36,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     return conversionsRequired;
   }
-  //break out required conversion calculations
-  function convertUsdToPhp() {
-    let value = userCurrency.value * dollarToPeso.value;
-    return value;
-  }
-
-  function convertUsdToWon() {
-    let value = userCurrency.value * dollarToWon.value;
-    return value;
-  }
-
-  function convertWonToPhp() {
-    let value = userCurrency.value * wonToPeso.value;
-    return value;
-  }
-
-  function convertWonToUsd() {
-    let value = userCurrency.value * wonToDollar.value;
-    return value;
-  }
-
-  function convertPhpToWon() {
-    let value = userCurrency.value * pesoToWon.value;
-    return value;
-  }
-
-  function convertPhpToDollar() {
-    let value = userCurrency.value * pesoToDollar.value;
-    return value;
-  }
 
   //html element text append
   function appendText(text) {
@@ -72,9 +43,48 @@ document.addEventListener("DOMContentLoaded", function () {
     return newText;
   }
 
-  //function to create break in text
-  function createBreak() {
-    return document.createElement("br");
+  //break out required conversion calculations
+  function convertUSDPHP() {
+    let value = userCurrency.value * dollarToPeso.value;
+    const element = document.createElement("p");
+    body.appendChild(element);
+    element.textContent = "Your USD to PHP value is: " + value;
+  }
+
+  function convertUSDWON() {
+    let value = userCurrency.value * dollarToWon.value;
+    const element = document.createElement("p");
+    body.appendChild(element);
+    element.textContent = "Your USD to WON value is: " + value;
+
+  }
+
+  function convertWONPHP() {
+    let value = userCurrency.value * wonToPeso.value;
+    const element = document.createElement("p");
+    body.appendChild(element);
+    element.textContent = "Your WON to PHP value is: " + value;
+  }
+
+  function convertWONUSD() {
+    let value = userCurrency.value * wonToDollar.value;
+    const element = document.createElement("p");
+    body.appendChild(element);
+    element.textContent = "Your WON to USD value is: " + value;
+  }
+
+  function convertPHPWON() {
+    let value = userCurrency.value * pesoToWon.value;
+    const element = document.createElement("p");
+    body.appendChild(element);
+    element.textContent = "Your PHP to WON value is: " + value;
+  }
+
+  function convertPHPUSD() {
+    let value = userCurrency.value * pesoToDollar.value;
+    const element = document.createElement("p");
+    body.appendChild(element);
+    element.textContent = "Your PHP to USD value is: " + value;
   }
 
   //scan getConversionsRequired() and execute the proper conversion function
@@ -82,26 +92,36 @@ document.addEventListener("DOMContentLoaded", function () {
     const conversions = getConversionsRequired();
     let output = document.getElementById("output");
     for (let i = 0; i < conversions.length; i++) {
-
-      if (conversions.includes("usdphp")) {
-
-        let convertDollartoPeso = convertUsdToPhp();
-        output.appendChild(appendText("Your USD to PHP value is: " + convertDollartoPeso));
-        output.appendChild(createBreak());
-
-      } else if (conversions.includes("usdwon")) {
-
-        let convertDollartoWon = convertUsdToWon().value;
-        output.appendChild(appendText("Your USD to WON value is: " + convertDollartoWon));
-        output.appendChild(createBreak());
-
-      } if (conversions.includes("")) {
-
-        // still need to define rule for empty result
-        
+      if (conversions[i] === "usdphp") {
+        convertUSDPHP();
+      } else if (conversions[i] === "usdwon") {
+        convertUSDWON();
+      } else if (conversions[i] === "wonusd") {
+        convertWONUSD();
+      } else if (conversions[i] === "wonphp") {
+        convertWONPHP();
+      } else if (conversions[i] === "phpusd") {
+        convertPHPUSD();
+      } else if (conversions[i] === "phpwon") {
+        convertPHPWON();
+      } else if (conversions[i] === "usdusd") {
+        const elementUSDUSD = document.createElement("p");
+        body.appendChild(elementUSDUSD);
+        elementUSDUSD.textContent = "Your USD value is:" + userCurrency.value;
+      } else if (conversions[i] === "phpphp") {
+        const elementPHPPHP = document.createElement("p");
+        body.appendChild(elementPHPPHP);
+        elementPHPPHP.textContent = "Your PHP value is:" + userCurrency.value;
+      } else if (conversions[i] === "wonwon") {
+        const elementWONWON = document.createElement("p");
+        body.appendChild(elementWONWON);
+        elementWONWON.textContent = "Your WON value is:" + userCurrency.value;
+      } if (conversions[i] === "") {
+        const elementEmpty = document.createElement("p");
+        body.appendChild(elementEmpty);
+        elementEmpty.textContent = "Please make a selection.";
       }
     }
-    return conversions;
   }
 
   //display value of conversion calculations in p html element at bottom of site
