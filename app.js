@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+
   //variables required to identify values in html user inputs
   const dollarToPeso = document.querySelector('.usd-php');
   const dollarToWon = document.querySelector('.usd-won');
@@ -8,11 +8,14 @@ document.addEventListener("DOMContentLoaded", function () {
   const pesoToDollar = document.querySelector('.php-usd');
   const userCurrency = document.querySelector('.userCurrency');
   const submit = document.querySelector('.submit');
-  const body = document.querySelector('.body')
+  const body = document.querySelector('.body');
 
   // Find user currency type in drop down menu and put in variable
-  const userCurrencyDropdown = document.getElementById("userCurrencySelector");
-  const selectedCurrency = userCurrencyDropdown.options[userCurrencyDropdown.selectedIndex].value;
+  function getUserCurrencyDropdown() {
+    let userCurrencyDropdown = document.querySelector("#userCurrencySelector");
+    let selectedCurrency = userCurrencyDropdown.value;
+    return selectedCurrency;
+  }
 
   // Find user desired currency conversions based on checkbox selections in an array
   function getCheckedValues() {
@@ -29,9 +32,9 @@ document.addEventListener("DOMContentLoaded", function () {
   //define the conversion required in an array
   function getConversionsRequired() {
     let conversionsRequired = [];
-    const checkedValues = getCheckedValues();
+    let checkedValues = getCheckedValues();
     for (let i = 0; i < checkedValues.length; i++) {
-      let conversion = selectedCurrency + checkedValues[i];
+      let conversion = getUserCurrencyDropdown() + checkedValues[i];
       conversionsRequired.push(conversion);
     }
     return conversionsRequired;
@@ -90,7 +93,6 @@ document.addEventListener("DOMContentLoaded", function () {
   //scan getConversionsRequired() and execute the proper conversion function
   function conversionScan() {
     const conversions = getConversionsRequired();
-    let output = document.getElementById("output");
     for (let i = 0; i < conversions.length; i++) {
       if (conversions[i] === "usdphp") {
         convertUSDPHP();
@@ -116,7 +118,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const elementWONWON = document.createElement("p");
         body.appendChild(elementWONWON);
         elementWONWON.textContent = "Your WON value is:" + userCurrency.value;
-      } if (conversions[i] === "") {
+      } if (conversions[i] === "" || null) {
         const elementEmpty = document.createElement("p");
         body.appendChild(elementEmpty);
         elementEmpty.textContent = "Please make a selection.";
@@ -130,5 +132,4 @@ document.addEventListener("DOMContentLoaded", function () {
     let submitOutput = document.getElementById("output");
     submitOutput.textContent = conversionScan();
   }
-  );
-});
+);
